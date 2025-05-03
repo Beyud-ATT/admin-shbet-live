@@ -30,9 +30,10 @@ export default function UserFeedback() {
         key: "comment",
       },
       {
-        title: "URL",
+        title: "Hình ảnh",
         dataIndex: "url",
         key: "url",
+        align: "center",
         render: (url) => <Image src={url} />,
       },
     ];
