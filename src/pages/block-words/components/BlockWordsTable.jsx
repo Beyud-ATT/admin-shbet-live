@@ -56,7 +56,7 @@ export default function BlockWordsTable() {
         dataSource={blockWords?.data}
         pagination={false}
         loading={isLoading}
-        scroll={{ y: 500 }}
+        scroll={{ y: 600 }}
       />
       <Pagination pagination={blockWords?.pagination} />
     </>

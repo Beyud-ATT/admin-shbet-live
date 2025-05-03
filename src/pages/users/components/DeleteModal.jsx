@@ -14,7 +14,7 @@ function DeleteForm({ record }) {
     userDelete(id, {
       onSuccess: () => {
         closeModal();
-        toast.success("Xóa tin tức thành công!");
+        toast.success("Xóa thành công!");
       },
     });
   }

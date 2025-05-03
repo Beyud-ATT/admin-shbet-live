@@ -16,7 +16,7 @@ function UpdateDefaultForm({ record }) {
       {
         onSuccess: () => {
           closeModal();
-          toast.success("Đã đặt mặc định!");
+          toast.success("Cập nhật thành công!");
         },
       },
     );

@@ -73,6 +73,16 @@ async function banChatUser(data) {
   }
 }
 
+async function getUserFeedback(params) {
+  try {
+    const response = await axoisBase.get(`${endpoint}/comments`, { params });
+    return response;
+  } catch (error) {
+    toast.error(error?.response?.data?.message);
+    throw new Error(error?.response?.data?.message);
+  }
+}
+
 export {
   getUsers,
   updatePassword,
@@ -81,4 +91,5 @@ export {
   updateUserType,
   deleteUser,
   banChatUser,
+  getUserFeedback,
 };

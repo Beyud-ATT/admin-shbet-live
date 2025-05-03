@@ -1,18 +1,18 @@
-import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import { CompoundModal, useModal } from "../../../components/CompoundModal";
 import { Form, Typography } from "antd";
-import useUsersBanChat from "../../../hooks/useUsersBanChat";
+import { PiGearSixBold } from "react-icons/pi";
+import useLivestreamUpdateDefault from "../../../hooks/useLivestreamUpdateDefault";
 import { toast } from "react-toastify";
 
-function BanChatForm({ record }) {
+function UpdateForm({ record }) {
   const [form] = Form.useForm();
   const { closeModal } = useModal();
-  const { displayName, id, chatBlocked } = record || {};
-  const { mutate: banChat } = useUsersBanChat();
+  const { title, userId } = record || {};
+  const { mutate: updateDefault } = useLivestreamUpdateDefault();
 
   function handleFinish() {
-    banChat(
-      { userId: id },
+    updateDefault(
+      { userId },
       {
         onSuccess: () => {
           closeModal();
@@ -29,7 +29,7 @@ function BanChatForm({ record }) {
           level={3}
           className="!text-[var(--color-brand-primary)]"
         >
-          {chatBlocked ? "Mở" : "Cấm"} chat người dùng {displayName}?
+          Đặt "{title}" mặc định?
         </Typography.Title>
       </Form.Item>
       <Form.Item className="flex justify-end">
@@ -37,38 +37,35 @@ function BanChatForm({ record }) {
           type="submit"
           className="cursor-pointer rounded-lg bg-[var(--color-brand-primary)] px-3 py-1 text-white"
         >
-          {chatBlocked ? "Mở" : "Cấm"} chat
+          Đặt
         </button>
       </Form.Item>
     </Form>
   );
 }
 
-export default function BanChatModal({ record }) {
-  const { chatBlocked } = record;
+export default function UpdateModal({ record }) {
   return (
     <CompoundModal>
       <CompoundModal.Trigger
-        render={(openModal) => (
-          <button
-            onClick={openModal}
-            className={`flex items-center justify-center gap-1 rounded-lg px-2 py-1 font-semibold text-white ${!chatBlocked ? "bg-red-500" : "bg-green-500"}`}
-          >
-            {!chatBlocked ? (
-              <HiSpeakerXMark className="text-xl" />
-            ) : (
-              <HiSpeakerWave className="text-xl" />
-            )}
-            {!chatBlocked ? "Mute" : "Unmute"}
-          </button>
-        )}
+        render={(openModal) => {
+          return (
+            <button
+              onClick={openModal}
+              className="flex cursor-pointer items-center justify-center gap-1 rounded-lg bg-green-700 px-2 py-1 text-white"
+            >
+              <PiGearSixBold className="text-xl" />
+              <p>Mặc định</p>
+            </button>
+          );
+        }}
       />
       <CompoundModal.Content
         classNames={{
           content: "gradient-bg !border-2 !border-[var(--color-brand-primary)]",
         }}
       >
-        <BanChatForm record={record} />
+        <UpdateForm record={record} />
       </CompoundModal.Content>
     </CompoundModal>
   );

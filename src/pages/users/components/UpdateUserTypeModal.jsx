@@ -20,7 +20,7 @@ function UpdateUserTypeForm({ record }) {
       {
         onSuccess: () => {
           closeModal();
-          toast.success("Đã khóa người dùng!");
+          toast.success("Cập nhật thành công!");
         },
       },
     );
@@ -56,7 +56,7 @@ function UpdateUserTypeForm({ record }) {
           type="submit"
           className="cursor-pointer rounded-lg bg-[var(--color-brand-primary)] px-3 py-1 text-white"
         >
-          Khóa tài khoản
+          Đổi loại người dùng
         </button>
       </Form.Item>
     </Form>

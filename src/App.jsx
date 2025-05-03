@@ -10,6 +10,8 @@ import Idol from "./pages/idols/Index";
 import { Flex } from "antd";
 import BlockWords from "./pages/block-words/Index";
 import GeneralLinks from "./pages/general-links/Index";
+import PresentComment from "./pages/present-comment/Index";
+import UserFeedback from "./pages/user-feedback/Index";
 
 function App() {
   const navigate = useNavigate();
@@ -25,6 +27,8 @@ function App() {
           <Route path="/idols" element={<Idol />} />
           <Route path="/block-words" element={<BlockWords />} />
           <Route path="/general-links" element={<GeneralLinks />} />
+          <Route path="/present-comment" element={<PresentComment />} />
+          <Route path="/user-feedback" element={<UserFeedback />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route

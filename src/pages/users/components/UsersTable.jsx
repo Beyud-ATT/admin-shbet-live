@@ -98,7 +98,7 @@ export default function UsersTable() {
         dataSource={users?.data}
         loading={isLoading}
         pagination={false}
-        scroll={{ y: 700 }}
+        scroll={{ y: 600 }}
       />
       <Pagination pagination={users?.pagination} />
     </>
